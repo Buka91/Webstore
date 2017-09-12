@@ -1,0 +1,8 @@
+<div class="product-list">
+	<app-product-item
+		*ngFor="let productEl of products"
+		[product]="productEl"
+		[ngClass]="'product-item-background'"
+	>
+	</app-product-item>
+</div>

@@ -19,6 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "styles.css"
       ],
       "scripts": [],
@@ -51,6 +52,10 @@
     }
   },
   "defaults": {
+    "serve": {
+      "host": "localhost",
+      "port": 4300
+    },
     "styleExt": "css",
     "component": {}
   }

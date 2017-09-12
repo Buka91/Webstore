@@ -1,0 +1,22 @@
+<div class="product-item">
+	<h4 class="list-group-item-heading">{{ product.name }}</h4>
+	<div class="pull-left img-wrapper">
+		<img src="{{ product.imagePath }}" alt="{{ product.name }}" class="img-responsive img-small" />
+	</div>
+	<div class="pull-down">
+		<table>
+		<tbody>
+		<tr>
+		<td><span class="text-bold pull-right">Category: </span></td><td>{{ product.category }}</td>
+		</tr>
+		<tr>
+		<td><span class="text-bold pull-right">Price: </span></td><td>{{ product.price | currency: 'EUR': true: '1.2-2' }}</td>
+		</tr>
+		</tbody>
+		</table>
+	</div>
+	<div class="button-group">
+		<button class="btn btn-primary pull-left btn-margin" (click)="onEdit(product)">Edit</button>
+		<button class="btn btn-danger pull-left btn-margin" (click)="onDelete(product)">Delete</button>
+	</div>
+</div>

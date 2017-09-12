@@ -1,0 +1,29 @@
+.img-small {
+	width: 100px;
+	padding: 10px;
+}
+
+h4 {
+	padding-top: 10px;
+}
+
+.pull-down {
+	margin: 30px;
+}
+
+.button-group {
+	margin-top: 10px;
+	width: 100%;
+}
+
+.text-bold {
+	font-weight: bold;
+}
+
+.btn-margin {
+	margin-left: 10px;
+}
+
+.img-wrapper {
+	height: 220px;
+}
