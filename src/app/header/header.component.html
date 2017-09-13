@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" [collapse]="!isCollapsed">
       <ul class="nav navbar-nav">
         <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/">Home</a></li>
-        <li role="presentation" routerLinkActive="active"><a routerLink="/addProduct">Add product</a></li>
+        <li role="presentation" routerLinkActive="active"><a [routerLink]="['/add', id]">Add product</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <form class="navbar-form navbar-left" role="search">

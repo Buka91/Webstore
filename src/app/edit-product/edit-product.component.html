@@ -1,3 +1,54 @@
-<p>
-  edit-product works!
-</p>
+<div class="container">
+	<h2>Add/Edit Product</h2>
+	<div class="wrapper">
+		<table>
+			<tbody>
+				<tr class="row-padding">
+					<td class="col-padding">
+						<label>Name:</label>
+					</td>
+					<td class="col-padding">
+						<input type="text" class="form-control short" [(ngModel)]="name">
+					</td>
+					<td><p [ngStyle]="{'display': displayRequired[0]}">* required field</p></td>
+				</tr>
+				<tr class="row-padding">
+					<td class="col-padding">
+						<label>Category:</label>
+					</td>
+					<td class="col-padding">
+						<select class="form-control" [(ngModel)]="category">
+							<option></option>
+							<option value="Books">Books</option>
+							<option value="Electronics">Electronics</option>
+							<option value="Clothes">Clothes</option>
+						</select>
+					</td>
+					<td><p [ngStyle]="{'display': displayRequired[1]}">* required field</p></td>
+				</tr>
+				<tr class="row-padding">
+					<td class="col-padding">
+						<label>Price:</label>
+					</td>
+					<td class="col-padding">
+						<input type="number" min="0" step="0.01" class="form-control short" [(ngModel)]="price">
+					</td>
+					<td><p [ngStyle]="{'display': displayRequired[2]}">* required field</p></td>
+				</tr>
+				<tr class="row-padding">
+					<td class="col-padding">
+						<label>Image url:</label>
+					</td>
+					<td class="col-padding">
+						<input type="text" class="form-control short" [(ngModel)]="imageUrl">
+					</td>
+					<td><p [ngStyle]="{'display': displayRequired[3]}">* required field</p></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>			
+	<div class="button-wrapper">
+		<button class="btn btn-primary" (click)="onSave()">Save</button>
+		<button class="btn btn-danger" (click)="onCancel()">Cancel</button>
+	</div>
+</div>

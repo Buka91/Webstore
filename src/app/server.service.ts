@@ -16,6 +16,10 @@ export class ServerService {
 
 	putProducts(products: Product[]) {
 		const headers = new Headers({ 'Content-Type': 'application/json' });
+		headers.append('Cache-control', 'no-cache');
+		headers.append('Cache-control', 'no-store');
+		headers.append('Expires', '0');
+		headers.append('Pragma', 'no-cache');
 		return this.http.put('https://webstore-c95ff.firebaseio.com/data.json', products, { headers: headers });
 	}
 

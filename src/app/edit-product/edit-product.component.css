@@ -1,0 +1,19 @@
+.short {
+	width: 250px;
+}
+
+.row-padding {
+	padding: 20px;
+}
+
+.col-padding {
+	padding: 20px 10px 20px 0;
+}
+
+.button-wrapper {
+	margin-left: 195px;
+}
+
+p {
+	color: #ff0000;
+}

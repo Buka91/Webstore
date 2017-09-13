@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { CollapseDirective } from 'ng2-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -17,8 +18,7 @@ import { ServerService } from './server.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'edit', component: EditProductComponent },
-  { path: 'edit/:id', component: EditProductComponent },
+  { path: 'add/:id', component: EditProductComponent },
   { path: 'edit/:id/:name', component: EditProductComponent },
 ];
 
@@ -36,7 +36,8 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    HttpModule
+    HttpModule,
+    FormsModule
   ],
   providers: [ProductService, ServerService],
   bootstrap: [AppComponent]
