@@ -19,28 +19,15 @@ export class HeaderComponent implements OnInit {
   	}
 
   	onSearch(event: KeyboardEvent) {
-  		console.log(event.keyCode);
-  		console.log("this.searchResult");
-  		console.log(this.searchResult);
   		if (event.keyCode === 13) {
-  			console.log("searchResult");
-  			console.log(this.searchResult);
+        this.productService.selectedCategory = 'All';
   			let products = this.productService.getProducts();
   			let counter: number;
-  			for (let i = 0; i < products.length; i++) {
+  			for (let prod of products) {
   				counter = 0;
-  				console.log(this.searchResult.search(/{products[i].name}/i));
-  				console.log(this.searchResult.search(/{products[i].category}/i));
-  				console.log(this.searchResult.search(/{products[i].price}/i));
-  				let regexName = new RegExp(products[i].name, 'i');
-  				let regexCategory = new RegExp(products[i].category, 'i');
-  				let regexPrice = new RegExp(products[i].price.toString(), 'i');
-  				console.log("regexName");
-  				console.log(regexName);
-  				console.log("regexCategory");
-  				console.log(regexCategory);
-  				console.log("regexPrice");
-  				console.log(regexPrice);
+  				let regexName = new RegExp(prod.name, 'i');
+  				let regexCategory = new RegExp(prod.category, 'i');
+  				let regexPrice = new RegExp(prod.price.toString(), 'i');
   				if (!this.searchResult.match(regexName)) {
   					counter++;
   				} 
@@ -50,11 +37,12 @@ export class HeaderComponent implements OnInit {
   				if (!this.searchResult.match(regexPrice)) {
   					counter++;
   				}
-  				console.log("counter = " + counter);
-  				if (counter === 3) products[i].display = false;
+  				if (counter === 3) {
+            prod.display = false;
+          } else {
+            prod.display = true;
+          }
   			}
-  			console.log("productArray");
-  			console.log(products);
   			this.searchResult = null;
   		}
   	}

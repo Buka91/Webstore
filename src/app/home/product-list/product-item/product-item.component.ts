@@ -19,7 +19,7 @@ export class ProductItemComponent implements OnInit {
   }
 
   onDelete(product: Product) {
-  	product.display = false;
+  	product.deleted = true;
     this.serverService.putProducts(this.productService.getProducts()).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)

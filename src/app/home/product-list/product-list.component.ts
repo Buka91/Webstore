@@ -18,9 +18,9 @@ export class ProductListComponent implements OnInit, AfterContentChecked {
       this.products = this.productService.getProducts().filter(
         (product) => {
           if (this.productService.selectedCategory === 'All') {
-            return product.display === true;
+            return product.display === true && product.deleted === false;
           } else {
-            return product.display === true && product.category === this.productService.selectedCategory;
+            return product.display === true && product.deleted === false && product.category === this.productService.selectedCategory;
           }
         }
       );

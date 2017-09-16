@@ -44,6 +44,7 @@ export class EditProductComponent implements OnInit {
   		if (!this.price) this.displayRequired[2] = 'block';
   		if (!this.imageUrl || this.imageUrl === '') this.displayRequired[3] = 'block';
   		if (this.displayRequired.indexOf('block') > -1) return;
+
   		let products: Product[] = this.productService.getProducts();
   		if (this.activatedRoute.snapshot.url[0].path === 'edit') {
   			let product: Product = this.productService.getProducts()[this.id - 1];
@@ -54,22 +55,22 @@ export class EditProductComponent implements OnInit {
   			products[this.id - 1] = product;
   			this.productService.setProducts(products);
   		} else {
-  			 let product: Product = new Product(this.id, this.name, this.category, this.imageUrl, this.price, true);
+  			 let product: Product = new Product(this.id, this.name, this.category, this.imageUrl, this.price, true, false);
   			 products.push(product);
   		}
+
   		this.productService.setProducts(products);
   		this.serverService.putProducts(this.productService.getProducts()).subscribe(
       		(response) => console.log(response),
       		(error) => console.log(error)
     	);
-    	setTimeout(() => {
-    		this.displayRequired.map(item => 'none');
-    		this.name = null;
-    		this.category = null;
-    		this.price = null;
-    		this.imageUrl = null;
-    		this.router.navigate(['/'])
-    	}, 200);
+
+    	this.displayRequired.map(item => 'none');
+    	this.name = null;
+    	this.category = null;
+    	this.price = null;
+    	this.imageUrl = null;
+    	this.router.navigate(['/']);
   	}
 
   	onCancel() {

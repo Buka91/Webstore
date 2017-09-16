@@ -9,30 +9,26 @@ export class ServerService {
 	constructor(private http: Http) {
 	}
 
-	storeProducts(products: Product[]) {
-		const headers = new Headers({ 'Content-Type': 'application/json' });
-		return this.http.post('https://webstore-c95ff.firebaseio.com/data.json', products, { headers: headers });
-	}
-
 	putProducts(products: Product[]) {
 		const headers = new Headers({ 'Content-Type': 'application/json' });
-		headers.append('Cache-control', 'no-cache');
-		headers.append('Cache-control', 'no-store');
-		headers.append('Expires', '0');
-		headers.append('Pragma', 'no-cache');
 		return this.http.put('https://webstore-c95ff.firebaseio.com/data.json', products, { headers: headers });
 	}
 
 	transformJsonToProductArray(data) {
 		let productArr: Product[] = [];
-		for (let i = 0; i < data.length; i++) {
-			productArr.push(new Product(data[i].id, data[i].name, data[i].category, data[i].imagePath, data[i].price, data[i].display));
+		for (let prod of data) {
+			productArr.push(new Product(prod.id, prod.name, prod.category, prod.imagePath, prod.price, prod.display, prod.deleted));
 		}
 		return productArr;
 	}
 
 	getProducts() {
-		return this.http.get('https://webstore-c95ff.firebaseio.com/data.json').map(
+		const headers = new Headers({ 'Content-Type': 'application/json' });
+		headers.append('Cache-control', 'no-cache');
+		headers.append('Cache-control', 'no-store');
+		headers.append('Expires', '0');
+		headers.append('Pragma', 'no-cache');
+		return this.http.get('https://webstore-c95ff.firebaseio.com/data.json', { headers: headers }).map(
 			(response: Response) => {
 				const dataArr = response.json();
 				let productsArr = this.transformJsonToProductArray(dataArr);

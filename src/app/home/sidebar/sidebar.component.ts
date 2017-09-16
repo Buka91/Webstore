@@ -19,5 +19,9 @@ export class SidebarComponent implements OnInit {
   	chooseCategory(category: string) {
       this.productService.selectedCategory = category;
   		this.cat = this.productService.selectedCategory;
+      let products = this.productService.getProducts();
+      for (let product of products) {
+        product.display = true;
+      }
   	}
 }

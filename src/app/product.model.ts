@@ -5,6 +5,7 @@ export class Product {
 		public category: string,
 		public imagePath: string,
 		public price: number,
-		public display: boolean
+		public display: boolean,
+		public deleted: boolean
 	) {}
 }
